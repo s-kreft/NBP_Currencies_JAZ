@@ -12,6 +12,7 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/nbp")
 public class NbpController {
+
     private final NbpService nbpService;
 
     public NbpController(NbpService nbpService) {
