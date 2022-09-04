@@ -16,11 +16,10 @@ public class NbpService {
         this.rest = rest;
     }
 
-    public Integer getResponseList(String firstDate, String lastDate, String currency) {
+    public Root[] getResponseList(String firstDate, String lastDate, String currency) {
         var result = rest.getForEntity("http://api.nbp.pl/api/exchangerates/tables/A/" + firstDate + "/" + lastDate + "/?format=json", Root[].class);
         var currenciesList = result.getBody();
+        return currenciesList;
 
-        
-
-
+    }
     }

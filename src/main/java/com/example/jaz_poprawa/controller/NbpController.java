@@ -1,6 +1,7 @@
 package com.example.jaz_poprawa.controller;
 
 
+import com.example.jaz_poprawa.model.Root;
 import com.example.jaz_poprawa.service.NbpService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ public class NbpController {
     }
 
     @RequestMapping("/get")
-    public ResponseEntity<Integer> getCurrencies( @RequestParam String firstDay,@RequestParam String lastDay,@RequestBody double mid) {
-        return ResponseEntity.ok(nbpService.getResponseList(firstDay, lastDay, mid));
+    public ResponseEntity<Root[]> getCurrencies(@RequestParam String firstDay, @RequestParam String lastDay, @RequestBody String currency) {
+        return ResponseEntity.ok(nbpService.getResponseList(firstDay, lastDay, currency));
+    }
 }
