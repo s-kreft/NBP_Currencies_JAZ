@@ -1,13 +1,13 @@
 package com.example.jaz_poprawa.controller;
 
 
+import com.example.jaz_poprawa.model.Rate;
 import com.example.jaz_poprawa.model.Root;
 import com.example.jaz_poprawa.service.NbpService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/nbp")
@@ -18,8 +18,8 @@ public class NbpController {
         this.nbpService = nbpService;
     }
 
-    @RequestMapping("/get")
-    public ResponseEntity<Root[]> getCurrencies(@RequestParam String firstDay, @RequestParam String lastDay, @RequestBody String currency) {
+    @GetMapping("/{currency}")
+    public ResponseEntity<ArrayList<Rate>> getCurrencies(@PathVariable String currency, @RequestParam String firstDay, @RequestParam String lastDay) {
         return ResponseEntity.ok(nbpService.getResponseList(firstDay, lastDay, currency));
     }
 }
